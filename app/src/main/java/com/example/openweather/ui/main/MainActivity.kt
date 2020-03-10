@@ -1,21 +1,14 @@
 package com.example.openweather.ui.main
 
-import android.content.SharedPreferences
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View
 import ar.com.wolox.wolmo.core.activity.WolmoActivity
-import ar.com.wolox.wolmo.core.util.SharedPreferencesManager
-import ar.com.wolox.wolmo.core.util.ToastFactory
-import ar.com.wolox.wolmo.networking.retrofit.RetrofitServices
 import com.example.geopagos.utils.SharedPreferencesUtils
 import com.example.openweather.R
 import com.example.openweather.model.CityModel
-import com.example.openweather.model.CityModelList
-import com.example.openweather.model.ComboModel
 import com.example.openweather.ui.main.cityselection.CitySelectionFragment
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_main.*
 import java.io.IOException
 import java.io.InputStream
 import javax.inject.Inject
@@ -46,5 +39,9 @@ class MainActivity : WolmoActivity() {
         } catch (ex: IOException) {
             ex.printStackTrace().toString()
         }
+    }
+
+    fun showSnackBar(parent: View, message: String) {
+        Snackbar.make(parent, message, Snackbar.LENGTH_LONG).show()
     }
 }
