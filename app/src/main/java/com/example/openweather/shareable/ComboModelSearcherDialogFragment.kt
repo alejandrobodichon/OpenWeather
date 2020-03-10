@@ -9,6 +9,7 @@ import android.content.DialogInterface
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.openweather.R
+import com.example.openweather.model.CityModel
 import com.example.openweather.model.ComboModel
 
 /**
@@ -16,14 +17,14 @@ import com.example.openweather.model.ComboModel
  */
 class ComboModelSearcherDialogFragment: DialogFragment() {
     private var callback: Callback? = null
-    private var items: List<ComboModel>? = null
+    private var items: List<CityModel>? = null
     private var svFilterComboModels: SearchView? = null
     private var rvComboModels: RecyclerView? = null
     private var comboModelAdapter: ComboModelsAdapter? = null
     private var title: String = ""
 
 
-    fun newInstance(_items: List<ComboModel>, _title: String,  _callback: Callback): ComboModelSearcherDialogFragment {
+    fun newInstance(_items: List<CityModel>, _title: String,  _callback: Callback): ComboModelSearcherDialogFragment {
         val adFragment = ComboModelSearcherDialogFragment()
         adFragment.items = _items
         adFragment.callback = _callback
@@ -50,7 +51,7 @@ class ComboModelSearcherDialogFragment: DialogFragment() {
 
         rvComboModels = vRoot.findViewById(R.id.rvComboModels)
         comboModelAdapter = ComboModelsAdapter(context!!,items!!,object : OnComboModelClick {
-            override fun onClick(comboModel: ComboModel) {
+            override fun onClick(comboModel: CityModel) {
                 svFilterComboModels?.clearFocus()
                 callback?.onResponseOk(comboModel)
                 dialog!!.dismiss()
@@ -65,9 +66,7 @@ class ComboModelSearcherDialogFragment: DialogFragment() {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                if (comboModelAdapter != null) {
-                    comboModelAdapter!!.filter.filter(newText)
-                }
+                comboModelAdapter?.filter?.filter(newText)
 
                 return false
             }

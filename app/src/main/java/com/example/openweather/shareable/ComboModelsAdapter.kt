@@ -10,17 +10,18 @@ import android.widget.Filterable
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.openweather.R
+import com.example.openweather.model.CityModel
 import com.example.openweather.model.ComboModel
 import java.util.ArrayList
 
 /**
  */
 class ComboModelsAdapter(private val context: Context,
-                         private var comboModels: List<ComboModel>,
+                         private var comboModels: List<CityModel>,
                          private val onItemClick: OnComboModelClick): RecyclerView.Adapter<ComboModelsAdapter.ViewHolder>(), Filterable {
 
-    private val lComboModels: MutableList<ComboModel> = ArrayList()
-    private var lComboModelsFiltered: MutableList<ComboModel> = ArrayList()
+    private val lComboModels: MutableList<CityModel> = ArrayList()
+    private var lComboModelsFiltered: MutableList<CityModel> = ArrayList()
     private var valueFilter = ValueFilter()
 
     init {
@@ -41,8 +42,8 @@ class ComboModelsAdapter(private val context: Context,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val bItem = this.lComboModelsFiltered.get(position)
-        holder.llComboModel.setOnClickListener({ _ -> onItemClick.onClick(bItem) })
-        holder.tvDescription.text = bItem.description
+        holder.llComboModel.setOnClickListener {onItemClick.onClick(bItem) }
+        holder.tvDescription.text = bItem.name + " - " + bItem.country
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -51,14 +52,13 @@ class ComboModelsAdapter(private val context: Context,
     }
 
     private inner class ValueFilter : Filter() {
-        override fun performFiltering(constraint: CharSequence?): Filter.FilterResults {
-            val results = Filter.FilterResults()
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val results = FilterResults()
             val sConstraint = constraint!!.toString().toLowerCase()
             if ( constraint.isNotEmpty() ) {
-                val filterList = ArrayList<ComboModel>()
+                val filterList = ArrayList<CityModel>()
                 for (model in lComboModels) {
-                    if (model.description.isNullOrEmpty() &&
-                            model.description?.toLowerCase()!!.contains(sConstraint)) {
+                    if (!model.name.isNullOrEmpty() && model.name?.toLowerCase().contains(sConstraint)) {
                         filterList.add(model)
                     }
                 }
@@ -71,9 +71,9 @@ class ComboModelsAdapter(private val context: Context,
             return results
         }
 
-        override fun publishResults(constraint: CharSequence, results: Filter.FilterResults) {
+        override fun publishResults(constraint: CharSequence, results: FilterResults) {
             lComboModelsFiltered.clear()
-            lComboModelsFiltered.addAll(results.values as Collection<ComboModel>)
+            lComboModelsFiltered.addAll(results.values as Collection<CityModel>)
 
             notifyDataSetChanged()
         }

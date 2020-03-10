@@ -5,6 +5,7 @@ import ar.com.wolox.wolmo.core.util.SharedPreferencesManager
 import com.example.openweather.model.CityModel
 import com.example.openweather.model.CityModelList
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 import javax.inject.Inject
 
@@ -15,10 +16,11 @@ class SharedPreferencesUtils @Inject constructor(
 
     private val gson: Gson = Gson()
 
-    var cityList: CityModelList?
+    var cityList: List<CityModel>?
         get() {
             val fieldJson = sharedPreferencesManager.get(KEY_CITY, null)
-            return gson.fromJson(fieldJson, CityModelList::class.java)
+            val listType = object : TypeToken<List<CityModel>>() {}.type
+            return gson.fromJson(fieldJson,listType)
         }
         set(cityList) {
             sharedPreferencesManager.store(KEY_CITY, gson.toJson(cityList))

@@ -1,11 +1,11 @@
-package com.example.geopagos.di
+package com.example.openweather.di
 
 import android.app.Application
 import ar.com.wolox.wolmo.core.di.modules.ContextModule
 import ar.com.wolox.wolmo.core.di.modules.DefaultModule
 import ar.com.wolox.wolmo.core.di.scopes.ApplicationScope
 import ar.com.wolox.wolmo.networking.di.NetworkingComponent
-import com.example.geopagos.GeopagosApplication
+import com.example.openweather.OpenWeatherApplication
 
 import dagger.BindsInstance
 import dagger.Component
@@ -18,10 +18,10 @@ import dagger.android.support.AndroidSupportInjectionModule
         modules = [AndroidSupportInjectionModule::class, DefaultModule::class, ContextModule::class,
             AppModule::class])
 
-interface AppComponent : AndroidInjector<GeopagosApplication> {
+interface AppComponent : AndroidInjector<OpenWeatherApplication> {
 
     @Component.Builder
-    abstract class Builder : AndroidInjector.Builder<GeopagosApplication>() {
+    abstract class Builder : AndroidInjector.Builder<OpenWeatherApplication>() {
 
         @BindsInstance
         abstract fun application(application: Application): Builder

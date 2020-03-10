@@ -1,19 +1,15 @@
-package com.example.geopagos.ui.main.amount
+package com.example.openweather.ui.main.cityselection
 
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
-import ar.com.wolox.wolmo.networking.retrofit.RetrofitServices
-import com.example.geopagos.model.PaymentMethodModel
-import com.example.geopagos.network.callback.AuthCallback
-import com.example.geopagos.network.services.GetPaymentMethodsList
-import okhttp3.ResponseBody
-import retrofit2.Response
+import com.example.geopagos.ui.main.amount.ICitySelectionView
+
 import javax.inject.Inject
 
-class CitySelectionPresenter @Inject constructor() : BasePresenter<IAmountView>() {
+class CitySelectionPresenter @Inject constructor() : BasePresenter<ICitySelectionView>() {
 
     fun onAmountValidation(amount: Float) {
         if(amount > 0)
-            view.goToPaymentMethodFragment(amount)
+            //view.goToPaymentMethodFragment(amount)
         else
             view.showError()
     }
