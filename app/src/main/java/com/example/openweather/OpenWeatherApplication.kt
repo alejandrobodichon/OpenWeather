@@ -25,7 +25,7 @@ class OpenWeatherApplication : WolmoApplication() {
     }
 
     private fun buildDaggerNetworkingComponent(): NetworkingComponent {
-        val builder = DaggerNetworkingComponent.builder().baseUrl("https://api.mercadopago.com/")
+        val builder = DaggerNetworkingComponent.builder().baseUrl("https://api.openweathermap.org")
             .gsonNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
         builder.okHttpInterceptors(buildHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY), ChuckInterceptor(this))
         return builder.build()

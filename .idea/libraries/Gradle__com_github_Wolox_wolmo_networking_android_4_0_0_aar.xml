@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.Wolox:wolmo-networking-android:4.0.0@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e58767504290c6ab914ec37fd8a50e19/wolmo-networking-android-4.0.0/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e58767504290c6ab914ec37fd8a50e19/wolmo-networking-android-4.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e58767504290c6ab914ec37fd8a50e19/wolmo-networking-android-4.0.0/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.wolox/wolmo-networking-android/4.0.0/c3f0edd5a04a72c677e0071fb6b8c99fff8bfca7/wolmo-networking-android-4.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

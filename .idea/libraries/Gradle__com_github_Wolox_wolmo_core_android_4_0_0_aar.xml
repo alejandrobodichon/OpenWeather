@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.Wolox:wolmo-core-android:4.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d25b9ca29e3e38ecea6755032cbea603/jetified-wolmo-core-android-4.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d25b9ca29e3e38ecea6755032cbea603/jetified-wolmo-core-android-4.0.0/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.wolox/wolmo-core-android/4.0.0/4b7ea54dd8b2cfc29af1b533b51b4a51624d1a30/wolmo-core-android-4.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

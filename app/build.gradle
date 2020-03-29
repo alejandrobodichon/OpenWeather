@@ -1,9 +1,11 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-kapt'
-
 apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-kapt'
+
+
 apply plugin: 'kotlin-android-extensions'
+
 
 
 android {
@@ -49,10 +51,12 @@ buildscript {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly 'com.google.code.findbugs:jsr305:3.0.1'
+    
 
     // Wolmo
-    implementation "com.github.Wolox:wolmo-core-android:3.1.0"
-    implementation "com.github.wolox:wolmo-networking-android:dcaf22b16df56ba42434487aac2e63fed6868f59"
+    implementation "com.github.Wolox:wolmo-core-android:4.0.0"
+    implementation "com.github.Wolox:wolmo-networking-android:4.0.0"
+    //implementation "com.github.wolox:wolmo-networking-android:dcaf22b16df56ba42434487aac2e63fed6868f59"
 
     // Android support libraries
     implementation "androidx.core:core:$androidx_core_version"
@@ -72,8 +76,6 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.android.material:material:1.0.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
     // Okhttp
     implementation "com.squareup.okhttp3:logging-interceptor:$square_logging_interceptor_version"

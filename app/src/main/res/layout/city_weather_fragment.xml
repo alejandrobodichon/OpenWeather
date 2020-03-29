@@ -2,11 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/echecq_list_fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:animateLayoutChanges="true"
     android:background="@android:color/white">
 
     <View
@@ -20,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/echeq_list_fragmente_tabs_tool_bar"
+        android:id="@+id/tlCityList"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_centerHorizontal="true"
@@ -36,17 +34,13 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/echeq_list_fragmente_tabs"
+        android:id="@+id/vpCity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/echeq_list_fragmente_tabs_tool_bar" />
+        app:layout_constraintTop_toBottomOf="@id/tlCityList" />
 
-    <Button
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/echeq_list_fragment_button"
+    <include
+        layout="@layout/progress_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        tools:visibility="visible"
-        style="@style/full_width_button" />
+        android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

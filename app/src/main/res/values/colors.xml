@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ff9052</color>
-    <color name="colorPrimaryDark">#ff9052</color>
-    <color name="colorAccent">#F95F62</color>
+    <color name="colorPrimary">#1830CC</color>
+    <color name="colorPrimaryDark">#1830CC</color>
+    <color name="colorAccent">#ff9052</color>
 
     <color name="actionbar_title_text">#212121</color>
     <color name="bottombar_background">#FFFFFF</color>
+    <color name="gray_background">#A3B3B3B3</color>
+    <color name="gray_button">#FFCCCCCC</color>
+    <color name="gray_dark">#808080</color>
+    <color name="white_background">#FFFFFF</color>
+    <color name="black_background">#161616</color>
 
 </resources>

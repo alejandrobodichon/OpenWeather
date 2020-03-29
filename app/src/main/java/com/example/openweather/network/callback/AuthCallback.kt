@@ -10,9 +10,9 @@ abstract class AuthCallback<T> constructor(
 ) : NetworkCallback<T>() {
 
     override fun onResponse(call: Call<T>, response: Response<T>) {
-        if (response.isSuccessful && presenter.isViewAttached) {
-            this.onResponseSuccessful(response, response.body())
-        } else if (presenter.isViewAttached) {
+        if (response.isSuccessful && presenter.isViewAttached()) {
+            this.onResponseSuccessful(response.body())
+        } else if (presenter.isViewAttached()) {
             this.onResponseFailed(response.errorBody(), response.code())
         }
     }

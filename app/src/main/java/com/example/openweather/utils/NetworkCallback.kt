@@ -3,8 +3,7 @@ import okhttp3.ResponseBody
 import retrofit2.Response
 
 open class SimpleNetworkCallback<T> : NetworkCallback<T>() {
-
-    override fun onResponseSuccessful(response: Response<T>, responseBody: T?) {}
+    override fun onResponseSuccessful(response: T?) {}
 
     override fun onResponseFailed(p0: ResponseBody?, p1: Int) {}
 
@@ -13,18 +12,18 @@ open class SimpleNetworkCallback<T> : NetworkCallback<T>() {
 
 class NetworkCallbackBuilder<T> {
 
-    private var onResponseSuccessful: (Response<T>?, T?) -> Unit = { _, _ -> }
+    private var onResponseSuccessful: ( T?) -> Unit = { _ -> }
     private var onResponseFailed: (ResponseBody?, Int) -> Unit = { _, _ -> }
     private var onCallFailure: (Throwable?) -> Unit = {}
 
-    fun onResponseSuccessful(block: (Response<T>?, T?) -> Unit) = apply { onResponseSuccessful = block }
+    fun onResponseSuccessful(block: ( T?) -> Unit) = apply { onResponseSuccessful = block }
     fun onResponseFailed(block: (ResponseBody?, Int) -> Unit) = apply { onResponseFailed = block }
     fun onCallFailure(block: (Throwable?) -> Unit) = apply { onCallFailure = block }
 
     fun build(): SimpleNetworkCallback<T> {
         return object : SimpleNetworkCallback<T>() {
-            override fun onResponseSuccessful(response: Response<T>, responseBody: T?) {
-                onResponseSuccessful.invoke(response, responseBody)
+            override fun onResponseSuccessful( response: T?) {
+                onResponseSuccessful.invoke(response)
             }
 
             override fun onResponseFailed(p0: ResponseBody?, p1: Int) {

@@ -3,11 +3,10 @@ package com.example.openweather.ui.main.cityselection
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import ar.com.wolox.wolmo.core.presenter.BasePresenter
-import com.example.geopagos.ui.main.amount.ICitySelectionView
-import com.example.geopagos.utils.SharedPreferencesUtils
 import com.example.openweather.model.CityModel
 import com.example.openweather.shareable.Callback
 import com.example.openweather.shareable.ComboModelSearcherDialogFragment
+import com.example.openweather.utils.SharedPreferencesUtils
 
 import javax.inject.Inject
 
@@ -16,24 +15,32 @@ class CitySelectionPresenter @Inject constructor() : BasePresenter<ICitySelectio
     internal lateinit var sharedPreferencesUtils: SharedPreferencesUtils
 
 
-    fun setFilter(tv: TextView, fragmentManager: FragmentManager){
+    fun setFilter(tv: TextView, fragmentManager: FragmentManager) {
+        view?.showProgressBar()
         val combo =
-            ComboModelSearcherDialogFragment().newInstance(sharedPreferencesUtils.cityList!!, "Ciudad", object :
-                Callback {
-                override fun onResponseOk(vararg objs: Any) {
-                    val cityModel = objs[0] as CityModel
-                    view.renderCityResponse(cityModel,tv)
-                }
+            ComboModelSearcherDialogFragment().newInstance(
+                sharedPreferencesUtils.cityList!!,
+                "Ciudad",
+                object :
+                    Callback {
+                    override fun onResponseOk(vararg objs: Any) {
+                        val cityModel = objs[0] as CityModel
+                        view?.renderCityResponse(cityModel, tv)
+                        view?.hideProgressBar()
+                    }
 
-                override fun onResponseError(vararg objs: Any) {}
-            })
+                    override fun onResponseError(vararg objs: Any) {
+                        view?.hideProgressBar()
+                    }
+                })
         combo.show(fragmentManager, "dialog")
     }
 
-    fun checkCityCompleted(c1: String?,c2: String?,c3: String?,c4: String?,c5: String?){
-        if(!c1.isNullOrEmpty()||!c2.isNullOrEmpty()||!c3.isNullOrEmpty()||!c4.isNullOrEmpty()||!c5.isNullOrEmpty())
-
+    fun checkCityCompleted(cityModel: CityModel?) {
+        if (!cityModel?.id.isNullOrEmpty()){
+            view?.goToForecastFragment(cityModel!!)
+        }
         else
-            view.showError("Se debe seleccionar al menos una ciudad.")
+            view?.showError("Se debe seleccionar una ciudad.")
     }
 }
